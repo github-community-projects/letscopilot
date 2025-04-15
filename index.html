@@ -89,6 +89,9 @@
             to { opacity: 0; }
         }
 
+        .btn {
+          width: min-content
+        }
         .stack { display: flex; flex-direction: column; gap: 16px; }
 
         .gap--1 { gap: 0; * + * { margin-top: -1px } }
@@ -189,16 +192,16 @@
                 Generated URL
               </h3>
             </div>
-            <div>
-              <input id="urlOutput" class="font-mono p-2 mb-3 border rounded-2 bg-canvas-subtle overflow-auto width-full" value="https://github.com/copilot?model=&prompt=" readonly />
-            </div>
-            <button id="copyButton" class="btn btn-primary py-2 mr-2 color-bg-emphasis" type="button">
+            <div class="stack gap-16">
+              <input id="urlOutput" class="font-mono p-2 border rounded-2 bg-canvas-subtle overflow-auto width-full" value="https://github.com/copilot?model=&prompt=" readonly />
+              <button id="copyButton" class="btn btn-primary btn-medium py-2 color-bg-emphasis" type="button" type="button">
                 <svg class="octicon mr-1" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                  <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
+                  <path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
                 </svg>
                 Copy URL
-            </button>
+              </button>
+            
           </section>
 
 
@@ -233,7 +236,7 @@
               </div>
           </div>
           
-          <button id="copyImageMarkdownButton" class="btn btn-primary py-2 mr-2 color-bg-emphasis">
+          <button id="copyImageMarkdownButton" class="btn btn-primary py-2 btn-medium color-bg-emphasis" type="button">
               <svg class="octicon mr-1" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                   <path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path>
               </svg>
