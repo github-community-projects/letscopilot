@@ -150,7 +150,7 @@
               <h3 class="f4">
                 Prompt
               </h3>
-              <label for="promptInput" class="d-flex color-fg-muted text-normal f4">Enter your prompt to run on Copilot</label>
+              <label for="promptInput" class="d-flex color-fg-subtle text-normal f4">Enter your prompt to run on Copilot</label>
             </div>
             <textarea id="promptInput" class="form-control width-full" placeholder rows="8"></textarea>
           </section>
@@ -161,9 +161,10 @@
               <h3 class="f4">
                 Select Model
               </h3>
-              <label for="modelSelect" class="d-flex color-fg-muted text-normal f4">Choose model to run</label>
+              <label for="modelSelect" class="d-flex color-fg-subtle text-normal f4">Choose model the prompt will run on</label>
             </div>
-            <select id="modelSelect" class="form-select width-full mb-2">
+            <div class="stack gap-2">
+              <select id="modelSelect" class="form-select width-full mb-2">
                 <option value="">No choice (uses default)</option>
                 <option value="gpt-4o">GPT-4o (Default)</option>
                 <option value="claude-3.5-sonnet">Claude 3.5 Sonnet</option>
@@ -173,7 +174,9 @@
                 <option value="claude-3.7-sonnet">Claude 3.7 Sonnet (Pro)</option>
                 <option value="claude-3.7-sonnet-thought">Claude 3.7 Sonnet Thinking (Pro)</option>
                 <option value="gpt-4.5-preview">GPT-4.5 (Pro+)</option>
-            </select>
+              </select>
+              <span class="d-flex color-fg-subtle text-normal f5">If model is not available for the user, prompt will run with default model</label>
+            </div>
           </section>
 
           <!-- URL Output Section -->
@@ -203,7 +206,7 @@
               <h3 class="f4">
                 Choose a button style
               </h3>
-              <label class="d-flex color-fg-muted text-normal f4">Select a branded "Open in Copilot" button to use in your GitHub README</label>
+              <label class="d-flex color-fg-subtle text-normal f4">Select a branded "Open in Copilot" button to use in your repository README and elsewhere</label>
             </div>
             <div class="button-options-grid">
               <div class="button-options-column">
@@ -238,7 +241,7 @@
 
           <!-- Footer Section -->
           <footer class="stack gap-16 p-4 border color-border-default color-fg-muted text-center">
-              <p>Made with <span class="color-fg-danger">❤️</span> for GitHub Copilot</p>
+              <p class="m-0">Made with <span class="color-fg-danger">❤️</span> for GitHub Copilot</p>
           </footer>
           <section></section>
 
