@@ -91,20 +91,50 @@
 
         /* Success message animation */
         .success-message {
+            display: flex;  
+            align-items: center;
+            justify-content: center;
             position: fixed;
+            gap: 8px;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.25s ease;
             pointer-events: none;
             z-index: 100;
+            font-size: 16px;
+            background-color: var(--color-success-subtle);
+            color: var(--color-success-fg);
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid;
+            border-color: var(--color-success-fg);
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        @media screen and (max-width: 768px) {
+            .success-message {
+                bottom: 0;
+                width: 100vw;
+                border: none;
+                border-top: 1px solid;
+                padding: 16px;
+                border-radius: 0;
+                justify-content: center;
+                text-align: center;
+                box-shadow: 1px 0px 8px rgba(0, 0, 0, 0.2);
+
+                & svg {
+                  display: none;
+                }
+            }
         }
 
         .success-message.visible {
             opacity: 1;
-            animation: fadeOutAfterDelay 2s ease-in forwards;
-            animation-delay: 1s;
+            animation: fadeOutAfterDelay 1s ease-in forwards;
+            animation-delay: 2s;
         }
 
         @keyframes fadeOutAfterDelay {
@@ -273,7 +303,9 @@
           <section></section>
 
       <!-- Success Notification -->
-      <div id="successMessage" class="success-message color-bg-success-emphasis color-fg-on-emphasis px-3 py-2 rounded-2 border Box-shadow">URL copied to clipboard!</div>
+      <div id="successMessage" class="success-message Box-shadow">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"></path></svg>
+      </div>
    </main>
 
     <script>
@@ -377,14 +409,14 @@
          * Copy URL to clipboard
          */
         function copyURLToClipboard() {
-          copyToClipboard(elements.urlOutput.value, "URL copied to clipboard!");
+          copyToClipboard(elements.urlOutput.value, "URL copied to clipboard");
         }
         
         /**
          * Copy markdown to clipboard
          */
         function copyMarkdownToClipboard() {
-            copyToClipboard(generateMarkdown(), "Button markdown code copied!");
+            copyToClipboard(generateMarkdown(), "Button markdown code copied");
         }
         
         /**
@@ -439,7 +471,25 @@
          * @param {string} message - Message to display
          */
         function showSuccessMessage(message) {
-            elements.successMessage.textContent = message;
+            // Create SVG icon element
+            const svgIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svgIcon.setAttribute('width', '16');
+            svgIcon.setAttribute('height', '16');
+            svgIcon.setAttribute('viewBox', '0 0 16 16');
+            svgIcon.setAttribute('fill', 'currentColor');
+            
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', 'M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z');
+            svgIcon.appendChild(path);
+            
+            // Clear existing content
+            elements.successMessage.innerHTML = '';
+            
+            // Add SVG and message text
+            elements.successMessage.appendChild(svgIcon);
+            elements.successMessage.appendChild(document.createTextNode(' ' + message));
+            
+            // Show the message
             elements.successMessage.classList.add('visible');
             setTimeout(() => {
                 elements.successMessage.classList.remove('visible');
