@@ -91,20 +91,50 @@
 
         /* Success message animation */
         .success-message {
+            display: flex;  
+            align-items: center;
+            justify-content: center;
             position: fixed;
+            gap: 8px;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.25s ease;
             pointer-events: none;
             z-index: 100;
+            font-size: 16px;
+            background-color: var(--color-success-subtle);
+            color: var(--color-success-fg);
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid;
+            border-color: var(--color-success-fg);
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        @media screen and (max-width: 768px) {
+            .success-message {
+                bottom: 0;
+                width: 100vw;
+                border: none;
+                border-top: 1px solid;
+                padding: 16px;
+                border-radius: 0;
+                justify-content: center;
+                text-align: center;
+                box-shadow: 1px 0px 8px rgba(0, 0, 0, 0.2);
+
+                & svg {
+                  display: none;
+                }
+            }
         }
 
         .success-message.visible {
             opacity: 1;
-            animation: fadeOutAfterDelay 2s ease-in forwards;
-            animation-delay: 1s;
+            animation: fadeOutAfterDelay 1s ease-in forwards;
+            animation-delay: 2s;
         }
 
         @keyframes fadeOutAfterDelay {
@@ -155,6 +185,14 @@
          }
         }
 
+        footer {
+          border: 1px solid var(--color-border-default);
+          border-top: 0px;
+        }
+        i {
+          font-style: normal;
+          white-space: nowrap;
+        }
     </style>
 </head>
 <body class="color-bg-default text-gray">
@@ -164,9 +202,9 @@
             <svg alt="GitHub Copilot logo" aria-hidden="true" focusable="false" class="octicon octicon-mark-github v-align-middle mr-2" viewBox="0 0 48 48" width="32" height="32" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M47.801 34.003c-1.72 2.988-11.706 10.037-23.82 10.037S1.881 36.991.161 34.003a1.309 1.309 0 0 1-.161-.57v-5.615c.012-.17.047-.338.11-.498.744-1.867 2.692-4.58 5.206-5.308.333-.855.826-2.106 1.287-3.029a20.112 20.112 0 0 1-.104-2.171c0-2.659.563-4.992 2.262-6.729.793-.811 1.777-1.433 2.945-1.901C14.502 5.911 18.483 4 23.938 4c5.455 0 9.523 1.911 12.319 4.182 1.167.468 2.151 1.09 2.944 1.901 1.699 1.737 2.263 4.07 2.263 6.729 0 .736-.027 1.465-.105 2.171.461.923.954 2.174 1.288 3.029 2.513.728 4.461 3.441 5.205 5.308.081.205.115.424.115.645v5.318c0 .252-.04.502-.166.72ZM24.325 22.031h-.688a8.52 8.52 0 0 1-.709 1.016c-1.537 1.892-3.833 2.98-7.008 2.98-3.447 0-5.972-.717-7.557-2.514a4.408 4.408 0 0 1-.171-.21l-.195.21v13.155c2.867 1.558 9.02 4.353 15.984 4.353s13.117-2.795 15.984-4.353V23.513l-.195-.21s-.066.091-.171.21c-1.584 1.797-4.11 2.514-7.557 2.514-3.175 0-5.47-1.088-7.008-2.98a8.637 8.637 0 0 1-.709-1.016h-.033.033Zm-1.969-5.864a14.31 14.31 0 0 0 .127-1.785v-.042c-.003-1.537-.339-2.538-.876-3.152-.681-.78-2.09-1.378-5.06-1.057-3.008.326-4.69 1.073-5.643 2.048-.923.944-1.408 2.356-1.408 4.633 0 2.42.348 3.849 1.115 4.719.729.827 2.165 1.499 5.309 1.499 2.417 0 3.799-.786 4.683-1.873.948-1.168 1.482-2.878 1.753-4.99Zm3.25 0c.271 2.112.805 3.822 1.754 4.99.883 1.087 2.265 1.873 4.682 1.873 3.145 0 4.58-.672 5.309-1.499.767-.87 1.116-2.299 1.116-4.719 0-2.277-.485-3.689-1.408-4.633-.954-.975-2.635-1.722-5.644-2.048-2.969-.321-4.378.277-5.06 1.057-.537.614-.873 1.615-.876 3.152v.042c.002.53.042 1.123.127 1.785Z"></path><path d="M28.998 28.516c1.104 0 1.999.895 1.999 1.999v3.998a2 2 0 1 1-3.998 0v-3.998c0-1.104.895-1.999 1.999-1.999Zm-9.996 0c1.104 0 1.999.895 1.999 1.999v3.998a2 2 0 1 1-3.998 0v-3.998c0-1.104.895-1.999 1.999-1.999Z"></path></svg>
           </div>
           <div class="d-flex flex-column gap-8 flex-justify-center flex-items-center">
-              <h1 class="h1 f2 mb-0">Copilot Prompt URL Generator</h1>
-              <h2 class="color-fg-muted mx-auto f3 text-semibold">
-                Create a shareable URL to run a prompt on GitHub Copilot
+              <h1 class="h1 f2 mb-0 px-2">Copilot Prompt URL Generator</h1>
+              <h2 class="color-fg-muted mx-auto f3 text-semibold px-2">
+                Create a shareable URL to run a prompt on <i>GitHub Copilot</i>
               </h2>
           </div>
         </header>
@@ -187,13 +225,12 @@
           <section class="stack gap-16 p-4 border color-border-emphasis">
             <div class="stack gap-8">
               <h3 class="f4">
-                Select Model
+                Model
               </h3>
-              <label for="modelSelect" class="d-flex color-fg-subtle text-normal f4">Choose model the prompt will run with</label>
+              <label for="modelSelect" class="d-flex color-fg-subtle text-normal f4">Select model the prompt will run with</label>
             </div>
             <div class="stack gap-2">
               <select id="modelSelect" class="form-select width-full mb-2">
-                <option value="">No choice (uses default)</option>
                 <option value="gpt-4o">GPT-4o (Default)</option>
                 <option value="claude-3.5-sonnet">Claude 3.5 Sonnet</option>
                 <option value="o3-mini">o3-mini</option>
@@ -268,13 +305,15 @@
           </section>
 
           <!-- Footer Section -->
-          <footer class="stack gap-16 p-4 border color-border-default color-fg-muted text-center">
-              <p class="m-0">An official (side) project by the <a href="http://github.com/github">@github</a> team</p>
+          <footer class="stack gap-16 p-4 color-fg-muted text-center">
+              <p class="m-0">An official side-project by the <a href="http://github.com/github">@github</a> team</p>
           </footer>
           <section></section>
 
       <!-- Success Notification -->
-      <div id="successMessage" class="success-message color-bg-success-emphasis color-fg-on-emphasis px-3 py-2 rounded-2 border Box-shadow">URL copied to clipboard!</div>
+      <div id="successMessage" class="success-message Box-shadow">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"></path></svg>
+      </div>
    </main>
 
     <script>
@@ -378,14 +417,14 @@
          * Copy URL to clipboard
          */
         function copyURLToClipboard() {
-          copyToClipboard(elements.urlOutput.value, "URL copied to clipboard!");
+          copyToClipboard(elements.urlOutput.value, "URL copied to clipboard");
         }
         
         /**
          * Copy markdown to clipboard
          */
         function copyMarkdownToClipboard() {
-            copyToClipboard(generateMarkdown(), "Button markdown code copied!");
+            copyToClipboard(generateMarkdown(), "Button markdown code copied");
         }
         
         /**
@@ -440,7 +479,25 @@
          * @param {string} message - Message to display
          */
         function showSuccessMessage(message) {
-            elements.successMessage.textContent = message;
+            // Create SVG icon element
+            const svgIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svgIcon.setAttribute('width', '16');
+            svgIcon.setAttribute('height', '16');
+            svgIcon.setAttribute('viewBox', '0 0 16 16');
+            svgIcon.setAttribute('fill', 'currentColor');
+            
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', 'M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z');
+            svgIcon.appendChild(path);
+            
+            // Clear existing content
+            elements.successMessage.innerHTML = '';
+            
+            // Add SVG and message text
+            elements.successMessage.appendChild(svgIcon);
+            elements.successMessage.appendChild(document.createTextNode(' ' + message));
+            
+            // Show the message
             elements.successMessage.classList.add('visible');
             setTimeout(() => {
                 elements.successMessage.classList.remove('visible');
