@@ -1,4 +1,4 @@
-## Let Me Copilot That For You
+## Let's Copilot
 
 A simple vanilla HTML/JS web app to convert prompts into shareable URLs which open Copilot with the chosen prompt and model prepopulated.
 
